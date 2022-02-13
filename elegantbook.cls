@@ -21,6 +21,7 @@
 % ----- Colors -----
 \DeclareStringOption[blue]{color}
 \DeclareStringOption[en]{lang}
+\DeclareStringOption[sc]{cctype} % Chinese character type. Use "tc" to set to traditional Chinese
 \DeclareStringOption[answer]{result}
 \DeclareStringOption[fancy]{mode}
 \DeclareStringOption[normal]{device}
@@ -355,49 +356,94 @@
 \RequirePackage{appendix}
 
 \ifdefstring{\ELEGANT@lang}{cn}{
-  \renewcommand{\baselinestretch}{1.3}
-  \renewcommand{\contentsname}{目录}
-  \renewcommand{\figurename}{图}
-  \renewcommand{\tablename}{表}
-  \renewcommand{\partname}{\color{structurecolor}}
-  \renewcommand{\thepart}{第\zhnumber{\arabic{part}}部分}
-  \renewcommand{\listfigurename}{插图目录}
-  \renewcommand{\listtablename}{表格目录}
-  \renewcommand{\bibname}{参考文献}
-  \renewcommand{\appendixname}{附录}
-  \renewcommand{\indexname}{索\hspace{2em}引}
-  \newcommand\figref[1]{\textbf{图}~\ref{#1}}
-  \newcommand\tabref[1]{\textbf{表}~\ref{#1}}
   \ifdefstring{\ELEGANT@scheme}{chinese}{
     \renewcommand{\chaptername}{第\zhnumber{\arabic{chapter}}章}}{
-    \renewcommand{\chaptername}{第 \thechapter{} 章}}
-  \newcommand{\authorname}{\citshape 作者：}
-  \newcommand{\institutename}{\citshape 组织：}
-  \newcommand{\datename}{\citshape 时间：}
-  \newcommand{\versionname}{\citshape 版本：}
-  \newcommand{\notename}{笔记}
-  \renewcommand*{\proofname}{证明}
-  \newcommand{\definitionname}{定义}
-  \newcommand{\theoremname}{定理}
-  \newcommand{\axiomname}{公理}
-  \newcommand{\postulatename}{公设}
-  \newcommand{\lemmaname}{引理}
-  \newcommand{\propositionname}{命题}
-  \newcommand{\corollaryname}{推论}
-  \newcommand{\examplename}{例题} %
-  \newcommand{\instancename}{示例} %
-  \newcommand{\problemname}{问题} % 问题
-  \newcommand{\exercisename}{练习} % 练习=习题
-  \newcommand{\remarkname}{注}
-  \newcommand{\assumptionname}{假设}
-  \newcommand{\conclusionname}{结论}
-  \newcommand{\solutionname}{解}
-  \newcommand{\propertyname}{性质}
-  \newcommand{\introductionname}{内容提要}
-  \newcommand\bioinfo[2]{\gdef\@bioinfo{{\citshape #1}：#2}}
-  \newcommand{\updatename}{更新：}
-  \newcommand{\historyname}{版本更新历史}
+    \renewcommand{\chaptername}{第 \thechapter{} 章}
+  }
+  \ifdefstring{\ELEGANT@cctype}{tc}{
+      \renewcommand{\baselinestretch}{1.3}
+      \renewcommand{\contentsname}{目錄}
+      \renewcommand{\figurename}{圖}
+      \renewcommand{\tablename}{表}
+      \renewcommand{\partname}{\color{structurecolor}}
+      \renewcommand{\thepart}{第\zhnumber{\arabic{part}}部分}
+      \renewcommand{\listfigurename}{插圖目錄}
+      \renewcommand{\listtablename}{表格目錄}
+      \renewcommand{\bibname}{参考文獻}
+      \renewcommand{\appendixname}{附錄}
+      \renewcommand{\indexname}{索\hspace{2em}引}
+      \newcommand\figref[1]{\textbf{圖}~\ref{#1}}
+      \newcommand\tabref[1]{\textbf{表}~\ref{#1}}
+      \newcommand{\authorname}{\citshape 作者：}
+      \newcommand{\institutename}{\citshape 機構：}
+      \newcommand{\datename}{\citshape 時間：}
+      \newcommand{\versionname}{\citshape 版本：}
+      \newcommand{\notename}{筆記}
+      \renewcommand*{\proofname}{證明}
+      \newcommand{\definitionname}{定義}
+      \newcommand{\theoremname}{定理}
+      \newcommand{\axiomname}{公理}
+      \newcommand{\postulatename}{公設}
+      \newcommand{\lemmaname}{引理}
+      \newcommand{\propositionname}{命題}
+      \newcommand{\corollaryname}{推論}
+      \newcommand{\examplename}{例題} %
+      \newcommand{\instancename}{示例} %
+      \newcommand{\problemname}{問題} % 问题
+      \newcommand{\exercisename}{練習} % 练习=习题
+      \newcommand{\remarkname}{註}
+      \newcommand{\assumptionname}{假設}
+      \newcommand{\conclusionname}{結論}
+      \newcommand{\solutionname}{解}
+      \newcommand{\propertyname}{性質}
+      \newcommand{\introductionname}{提綱}
+      \newcommand\bioinfo[2]{\gdef\@bioinfo{{\citshape #1}：#2}}
+      \newcommand{\updatename}{更新：}
+      \newcommand{\historyname}{版本更新歷史}
   }{\relax}
+  \ifdefstring{\ELEGANT@cctype}{sc}{
+      \renewcommand{\baselinestretch}{1.3}
+      \renewcommand{\contentsname}{目录}
+      \renewcommand{\figurename}{图}
+      \renewcommand{\tablename}{表}
+      \renewcommand{\partname}{\color{structurecolor}}
+      \renewcommand{\thepart}{第\zhnumber{\arabic{part}}部分}
+      \renewcommand{\listfigurename}{插图目录}
+      \renewcommand{\listtablename}{表格目录}
+      \renewcommand{\bibname}{参考文献}
+      \renewcommand{\appendixname}{附录}
+      \renewcommand{\indexname}{索\hspace{2em}引}
+      \newcommand\figref[1]{\textbf{图}~\ref{#1}}
+      \newcommand\tabref[1]{\textbf{表}~\ref{#1}}
+      \newcommand{\authorname}{\citshape 作者：}
+      \newcommand{\institutename}{\citshape 组织：}
+      \newcommand{\datename}{\citshape 时间：}
+      \newcommand{\versionname}{\citshape 版本：}
+      \newcommand{\notename}{笔记}
+      \renewcommand*{\proofname}{证明}
+      \newcommand{\definitionname}{定义}
+      \newcommand{\theoremname}{定理}
+      \newcommand{\axiomname}{公理}
+      \newcommand{\postulatename}{公设}
+      \newcommand{\lemmaname}{引理}
+      \newcommand{\propositionname}{命题}
+      \newcommand{\corollaryname}{推论}
+      \newcommand{\examplename}{例题} %
+      \newcommand{\instancename}{示例} %
+      \newcommand{\problemname}{问题} % 问题
+      \newcommand{\exercisename}{练习} % 练习=习题
+      \newcommand{\remarkname}{注}
+      \newcommand{\assumptionname}{假设}
+      \newcommand{\conclusionname}{结论}
+      \newcommand{\solutionname}{解}
+      \newcommand{\propertyname}{性质}
+      \newcommand{\introductionname}{内容提要}
+      \newcommand\bioinfo[2]{\gdef\@bioinfo{{\citshape #1}：#2}}
+      \newcommand{\updatename}{更新：}
+      \newcommand{\historyname}{版本更新历史}
+  }{\relax}
+}{\relax}
+  
 \ifdefstring{\ELEGANT@lang}{en}{
   \setlength\parindent{2em}
   \newcommand\figref[1]{\textbf{Figure}~\ref{#1}}
